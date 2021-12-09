@@ -52,6 +52,7 @@ const roleUser = document.getElementById("role");
 const img = document.getElementById("image");
 const button = document.getElementById("addMemberButton");
 
+// adding photo 
 for (let i = 0; i < team.length; i++) {
 
   const addTeam = `
@@ -73,6 +74,8 @@ for (let i = 0; i < team.length; i++) {
  team_cont.innerHTML += addTeam 
 }
 
+
+// adding button 
 button.addEventListener("click" ,function () {
   team_cont.innerHTML = ""
   const obj = {
