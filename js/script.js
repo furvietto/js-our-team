@@ -55,6 +55,9 @@ const button = document.getElementById("addMemberButton");
 // adding photo 
 
 function addPhoto(array,container) {
+
+  team_cont.innerHTML = ""
+  
   for (let i = 0; i < array.length; i++) {
 
     const addTeam = `
@@ -80,13 +83,21 @@ addPhoto(team, team_cont);
 
 // adding button 
 button.addEventListener("click" ,function () {
-  team_cont.innerHTML = ""
-  const obj = {
-    name: nameUser.value,
-    role: roleUser.value,
-    image: img.value
+ 
+
+  nameValue = nameUser.value;
+  roleValue = roleUser.value;
+
+  if (nameValue.length > 0 && roleValue.length > 0) {
+
+    const obj = {
+      name: nameValue,
+      role: roleValue,
+      image: img.value
+    }
+    
+    team.push(obj)  
   }
-  team.push(obj)
   
   addPhoto(team, team_cont);
 })
