@@ -47,7 +47,10 @@ const team = [
 
 
 const team_cont = document.querySelector(".team-container");
-
+const nameUser = document.getElementById("name");
+const roleUser = document.getElementById("role");
+const img = document.getElementById("image");
+const button = document.getElementById("addMemberButton");
 
 for (let i = 0; i < team.length; i++) {
 
@@ -56,7 +59,7 @@ for (let i = 0; i < team.length; i++) {
   <div class="card-image">
     <img
       src="img/${team[i].image}"
-      alt="Wayne Barnett"
+      alt="${team[i].name}"
     />
   </div>
   <div class="card-text">
@@ -69,3 +72,34 @@ for (let i = 0; i < team.length; i++) {
   
  team_cont.innerHTML += addTeam 
 }
+
+button.addEventListener("click" ,function () {
+  team_cont.innerHTML = ""
+  const obj = {
+    name: nameUser.value,
+    role: roleUser.value,
+    image: img.value
+  }
+  team.push(obj)
+  
+  for (let i = 0; i < team.length; i++) {
+
+    const addTeam = `
+  <div class="team-card">
+    <div class="card-image">
+      <img
+        src="img/${team[i].image}"
+        alt="${team[i].name}"
+      />
+    </div>
+    <div class="card-text">
+      <h3>${team[i].name}</h3>
+      <p>${team[i].role}</p>
+    </div>
+  </div>
+  `
+  
+    
+   team_cont.innerHTML += addTeam 
+  }
+})
