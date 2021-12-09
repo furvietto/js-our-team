@@ -53,39 +53,9 @@ const img = document.getElementById("image");
 const button = document.getElementById("addMemberButton");
 
 // adding photo 
-for (let i = 0; i < team.length; i++) {
 
-  const addTeam = `
-<div class="team-card">
-  <div class="card-image">
-    <img
-      src="img/${team[i].image}"
-      alt="${team[i].name}"
-    />
-  </div>
-  <div class="card-text">
-    <h3>${team[i].name}</h3>
-    <p>${team[i].role}</p>
-  </div>
-</div>
-`
-
-  
- team_cont.innerHTML += addTeam 
-}
-
-
-// adding button 
-button.addEventListener("click" ,function () {
-  team_cont.innerHTML = ""
-  const obj = {
-    name: nameUser.value,
-    role: roleUser.value,
-    image: img.value
-  }
-  team.push(obj)
-  
-  for (let i = 0; i < team.length; i++) {
+function addPhoto(array,container) {
+  for (let i = 0; i < array.length; i++) {
 
     const addTeam = `
   <div class="team-card">
@@ -102,7 +72,21 @@ button.addEventListener("click" ,function () {
   </div>
   `
   
-    
-   team_cont.innerHTML += addTeam 
+   container.innerHTML += addTeam 
   }
+}
+
+addPhoto(team, team_cont);
+
+// adding button 
+button.addEventListener("click" ,function () {
+  team_cont.innerHTML = ""
+  const obj = {
+    name: nameUser.value,
+    role: roleUser.value,
+    image: img.value
+  }
+  team.push(obj)
+  
+  addPhoto(team, team_cont);
 })
